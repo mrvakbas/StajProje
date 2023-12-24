@@ -1,0 +1,68 @@
+﻿@using Entities.Models;
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model RickListViewModel
+
+@await Component.InvokeAsync("RickFilterMenu")
+
+<div class="container-fluid table" id="example">
+    <div page-model="@Model.Pagination" page-action="Index"
+         page-classes-enabled="true"
+         page-class="btn"
+         page-class-normal="btn-outline-dark"
+         page-class-selected="btn-primary"
+         class="btn-group d-inline">
+    </div>
+    <div class="row">
+        @foreach (var item in Model.RickResult)
+        {
+            <div class=" col-12 col-md-6 p-3">
+                <div class="d-flex position-relative">
+                    <img src="https://rickandmortyapi.com/api/character/avatar/203.jpeg" class="flex-shrink-0 img-fluid pe-2 " alt="..." style="width:175px;">
+                    <div>
+                        <h6 class="mt-0">@item.Name</h6>
+                        <p>@item.AirDate</p>
+                        <p><a href="@item.Characters">Characters</a></p>
+                        <p>@item.Episode</p>
+                        <p>@item.Created</p>
+                        <a href="@item.Url">@item.Url</a>
+                    </div>
+                </div>
+            </div>
+        }
+    
+    </div>
+</div>
+
+
+@* <table class="table-bordered table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>AirDate</th>
+            <th>Episode</th>
+            <th>Characters</th>
+            <th>Url</th>
+            <th>Created</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.AirDate</td>
+                <td>@item.Episode</td>
+                <td>@item.Characters</td>
+                <td>@item.Url</td>
+                <td>@item.Created</td>
+            </tr>
+        }
+    </tbody>
+</table> *@
